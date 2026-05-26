@@ -30,7 +30,7 @@ export default async function ResearchDetail({ params }: ParamProps) {
   }
 
   const { prev, next } = getPrevAndNextPosts(slug, "research");
-  const productionUrl = `https://anishvarma.com/research/${slug}`;
+  const productionUrl = `https://av7danger.dev/research/${slug}`;
 
   return (
     <article className="max-w-3xl mx-auto space-y-10 animate-fade-in relative">

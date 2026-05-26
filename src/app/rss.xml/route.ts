@@ -14,7 +14,7 @@ function escapeXml(unsafe: string): string {
 
 export async function GET() {
   const posts = getAllPosts();
-  const baseUrl = "https://anishvarma.com";
+  const baseUrl = "https://av7danger.dev";
 
   const items = posts.map((post) => {
     const subPath = post.type === "research" ? "research" : "writing";

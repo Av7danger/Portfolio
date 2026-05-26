@@ -5,7 +5,7 @@ export async function GET() {
 User-agent: *
 Allow: /
 
-Sitemap: https://anishvarma.com/sitemap.xml
+Sitemap: https://av7danger.dev/sitemap.xml
 `.trim();
 
   return new Response(robots, {

@@ -27,6 +27,7 @@ const inter = Inter({
 
 // Premium high-fidelity SEO metadata settings
 export const metadata: Metadata = {
+  metadataBase: new URL("https://av7danger.dev"),
   title: "Anish Varma | AI Security Researcher & Founding Engineer",
   description: "Researching AI/ML systems, offensive security, trust-boundary failures, autonomous agents, parser security, and mechanistic interpretability.",
   keywords: [
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     "Mechanistic Interpretability",
     "Abliteration",
   ],
-  authors: [{ name: "Anish Varma", url: "https://anishvarma.com" }],
+  authors: [{ name: "Anish Varma", url: "https://av7danger.dev" }],
   creator: "Anish Varma",
   publisher: "Anish Varma",
   robots: {
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://anishvarma.com",
+    url: "https://av7danger.dev",
     title: "Anish Varma | AI Security Researcher & Founding Engineer",
     description: "Researching AI/ML systems, offensive security, trust-boundary failures, autonomous agents, parser security, and mechanistic interpretability.",
     siteName: "Anish Varma Portfolio",
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     types: {
-      "application/rss+xml": "https://anishvarma.com/rss.xml",
+      "application/rss+xml": "https://av7danger.dev/rss.xml",
     },
   },
 };
