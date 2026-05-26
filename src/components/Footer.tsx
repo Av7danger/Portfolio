@@ -62,10 +62,7 @@ export function Footer() {
           </a>
         </div>
 
-        {/* Framework tech stack labels */}
-        <div className="text-center md:text-right text-[11px] text-neutral-600 uppercase tracking-widest">
-          <span>Static // Next.js + Tailwind</span>
-        </div>
+        {/* Framework tech stack labels removed to preserve editorial aesthetic */}
 
       </div>
     </footer>
