@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
+/* Define custom fonts and monochrome color variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #fafafa;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: var(--font-geist-sans), "Inter", sans-serif;
+  --font-mono: var(--font-geist-mono), "Fira Code", monospace;
 }
 
-@theme inline {
+@theme {
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global browser overrides */
+html {
+  background-color: #050505;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050505;
+  color: #fafafa;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom minimal scrollbar styled like technical IDEs */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Fine-grained high-contrast selection colors */
+::selection {
+  background-color: #f5f5f5;
+  color: #050505;
+}
+
+/* Custom academic footnotes divider and items */
+.footnotes {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #171717;
+  font-family: var(--font-sans);
+  color: #a3a3a3;
+}
+
+.footnotes-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 1.5rem;
+}
+
+.footnote-item {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footnote-backref {
+  color: #e5e5e5;
+  margin-left: 0.25rem;
+  text-decoration: none;
+  font-family: var(--font-mono);
+}
+
+.footnote-backref:hover {
+  text-decoration: underline;
+}
+
+/* Publication-quality technical prose markup rules */
+.prose {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.prose p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #d4d4d4;
+}
+
+.prose ul, .prose ol {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  color: #d4d4d4;
+}
+
+.prose strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+  color: #e5e5e5;
+}
+
+/* Code highlight specific alignments */
+.shiki-container pre {
+  margin: 0 !important;
+  padding: 1.25rem !important;
+  background-color: transparent !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  overflow-x: auto;
+}
+
+.shiki-container code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: inherit !important;
+}
+
+/* Citation helpers styling */
+.citation-helper-box {
+  margin-top: 3rem;
+  border-top: 1px dashed #262626;
+  padding-top: 2rem;
 }

@@ -1,65 +1,196 @@
-import Image from "next/image";
+import { getPostsByType } from "@/lib/markdown";
+import { ResearchCard } from "@/components/ResearchCard";
+import { ProjectCard } from "@/components/ProjectCard";
+import { ArrowRight, Github, Linkedin, Terminal, BookOpen } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+  // Retrieve compiled filesystem publications
+  const featuredResearch = getPostsByType("research").slice(0, 2);
+  const recentWriting = getPostsByType("writing").slice(0, 2);
+
+  // Top static projects for the homepage highlight
+  const featuredProjects = [
+    {
+      title: "Kai Autonomous Cybersecurity Agent Framework",
+      technologies: ["Rust", "Python", "LLM Security", "Sandboxing", "Exploit Dev"],
+      summary: "A high-performance autonomous agent framework built in Rust, engineered to execute offensive security diagnostics while maintaining rigid trust boundaries and sandboxed operation.",
+      githubUrl: "https://github.com/Av7danger",
+      demoUrl: "https://github.com/Av7danger",
+    },
+    {
+      title: "Qwen3.5 Alignment Abliteration Research",
+      technologies: ["PyTorch", "Transformer Lens", "Mechanistic Interpretability", "Activation Patching"],
+      summary: "Abliterating alignment guardrails in Qwen3.5 via targeted weight modifications. Implementing activation patching to analyze representation steering and representation drift.",
+      githubUrl: "https://github.com/Av7danger",
+      demoUrl: "https://huggingface.co/AV07/Qwen3.5-abliteratedink",
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="space-y-24 mt-8 sm:mt-16">
+      
+      {/* 1. TYPOGRAPHIC HERO SECTION */}
+      <section className="space-y-8 animate-fade-in">
+        <div className="space-y-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-neutral-500 flex items-center gap-2">
+            <Terminal className="w-3.5 h-3.5" />
+            <span>Systems &amp; AI Security</span>
+          </p>
+          
+          <h1 className="text-6xl sm:text-8xl font-bold tracking-tighter text-white font-display leading-[0.9] select-none">
+            ANISH
+            <br />
+            VARMA
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          
+          <p className="text-lg sm:text-xl font-mono text-neutral-300 font-semibold tracking-tight">
+            Security Researcher &amp; Founding Engineer
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <p className="text-neutral-400 max-w-2xl leading-relaxed text-[15px] sm:text-[16px] font-sans">
+          Researching AI/ML systems, offensive security, trust-boundary failures, autonomous agents, parser security, and modern distributed infrastructure. Focus areas include whitebox vulnerability discovery, activation steering, and mechanistic interpretability.
+        </p>
+
+        {/* CTA Button Grid */}
+        <div className="flex flex-wrap gap-4 pt-2">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/research"
+            className="flex items-center gap-2 bg-[#fafafa] hover:bg-neutral-200 text-[#050505] font-semibold text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            <BookOpen className="w-4 h-4" />
+            <span>View Research</span>
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/Av7danger"
             target="_blank"
             rel="noopener noreferrer"
+            className="flex items-center gap-2 border border-neutral-800 hover:border-neutral-700 bg-neutral-950 text-neutral-300 hover:text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
           >
-            Documentation
+            <Github className="w-4.5 h-4.5" />
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/danishvarma"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 border border-neutral-800 hover:border-neutral-700 bg-neutral-950 text-neutral-300 hover:text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
+          >
+            <Linkedin className="w-4.5 h-4.5" />
+            <span>LinkedIn</span>
           </a>
         </div>
-      </main>
+      </section>
+
+      {/* 2. FEATURED RESEARCH SECTION */}
+      <section className="space-y-6">
+        <div className="flex items-end justify-between border-b border-neutral-900 pb-3">
+          <h2 className="text-xl font-bold tracking-tight text-white font-display">
+            Selected Research Publications
+          </h2>
+          <a
+            href="/research"
+            className="flex items-center gap-1.5 font-mono text-xs text-neutral-400 hover:text-white transition-colors"
+          >
+            <span>Full Archive</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        {featuredResearch.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featuredResearch.map((post) => (
+              <ResearchCard key={post.slug} post={post} />
+            ))}
+          </div>
+        ) : (
+          <div className="border border-dashed border-neutral-900 p-8 text-center rounded-sm">
+            <p className="text-xs font-mono text-neutral-500">
+              No publications loaded in /content/research. Build-time system active.
+            </p>
+          </div>
+        )}
+      </section>
+
+      {/* 3. FEATURED PROJECTS SECTION */}
+      <section className="space-y-6">
+        <div className="flex items-end justify-between border-b border-neutral-900 pb-3">
+          <h2 className="text-xl font-bold tracking-tight text-white font-display">
+            Active Engineering Systems
+          </h2>
+          <a
+            href="/projects"
+            className="flex items-center gap-1.5 font-mono text-xs text-neutral-400 hover:text-white transition-colors"
+          >
+            <span>All Projects</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              title={project.title}
+              technologies={project.technologies}
+              summary={project.summary}
+              githubUrl={project.githubUrl}
+              demoUrl={project.demoUrl}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* 4. RECENT WRITING SECTION */}
+      <section className="space-y-6">
+        <div className="flex items-end justify-between border-b border-neutral-900 pb-3">
+          <h2 className="text-xl font-bold tracking-tight text-white font-display">
+            Recent Notes &amp; Writing
+          </h2>
+          <a
+            href="/writing"
+            className="flex items-center gap-1.5 font-mono text-xs text-neutral-400 hover:text-white transition-colors"
+          >
+            <span>All Writing</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </div>
+
+        {recentWriting.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {recentWriting.map((post) => (
+              <a
+                key={post.slug}
+                href={`/writing/${post.slug}`}
+                className="group p-6 border border-neutral-900 bg-[#030303] hover:border-neutral-800 transition-colors rounded-sm flex flex-col justify-between"
+              >
+                <div>
+                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider mb-2">
+                    {post.category} // {post.date}
+                  </div>
+                  <h3 className="text-base font-semibold text-neutral-200 group-hover:text-white transition-colors font-display">
+                    {post.title}
+                  </h3>
+                  <p className="text-neutral-400 text-xs sm:text-sm mt-2 leading-relaxed font-sans line-clamp-2">
+                    {post.description}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center gap-1.5 text-[10px] font-mono font-semibold text-neutral-400 group-hover:text-white transition-colors">
+                  <span>Read Essay</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="border border-dashed border-neutral-900 p-8 text-center rounded-sm">
+            <p className="text-xs font-mono text-neutral-500">
+              No notes loaded in /content/blog. Build-time system active.
+            </p>
+          </div>
+        )}
+      </section>
+
     </div>
   );
 }
