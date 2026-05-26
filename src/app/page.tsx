@@ -80,6 +80,13 @@ export default async function Home() {
             <span>LinkedIn</span>
           </a>
         </div>
+
+        {/* Subtle Resume Access Links */}
+        <div className="pt-3 pl-1 flex items-center gap-1.5 font-mono text-[10px] text-neutral-500 select-none">
+          <a href="/resume" className="hover:text-neutral-300 transition-colors">View Resume</a>
+          <span className="text-neutral-700">·</span>
+          <a href="/resume" className="hover:text-neutral-300 transition-colors">Download CV</a>
+        </div>
       </section>
 
       {/* 2. FEATURED RESEARCH SECTION */}
