@@ -49,7 +49,7 @@ export default async function Home() {
         </div>
 
         <p className="text-neutral-400 max-w-2xl leading-relaxed text-[15px] sm:text-[16px] font-sans">
-          Researching AI/ML systems, offensive security, trust-boundary failures, autonomous agents, parser security, and modern distributed infrastructure. Focus areas include whitebox vulnerability discovery, activation steering, and mechanistic interpretability.
+          Security researcher exploring alignment behavior, autonomous agents, and distributed trust boundaries.
         </p>
 
         {/* CTA Button Grid */}

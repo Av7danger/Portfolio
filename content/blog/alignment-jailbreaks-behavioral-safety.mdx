@@ -1,0 +1,179 @@
+---
+title: "Alignment, Jailbreaks, and the Fragility of Behavioral Safety in Modern LLMs"
+description: "A deep dive into representation-level behavioral steering, latent-space jailbreaks, and the security implications of treating safety as an optimization overlay."
+date: "2026-05-24"
+category: "AI Security"
+tags: ["alignment", "jailbreaks", "behavioral-safety", "open-weights", "llm-security"]
+readingTime: "7 min read"
+featured: true
+draft: false
+---
+
+Over the past year, jailbreak research around open-weight language models has evolved far beyond simple prompt tricks.
+
+Early jailbreaks mostly relied on direct instruction overrides:
+
+> “Ignore previous instructions.”
+> “Act as an unrestricted assistant.”
+> “Roleplay as another system.”
+
+Those techniques still work occasionally, but modern jailbreak research has increasingly shifted toward something much more interesting: **behavioral steering at the representation level**.
+
+Instead of attacking only prompts, researchers are now exploring:
+
+* latent-space manipulation
+* activation steering
+* refusal suppression
+* system prompt decomposition
+* semantic drift across long conversations
+* multi-agent trust-boundary failures
+* tool-routing abuse inside autonomous frameworks
+
+And models like Qwen3.5 are particularly interesting in this context because they are:
+
+* highly capable
+* openly available
+* increasingly integrated into autonomous systems
+* heavily dependent on alignment layers added after pretraining
+
+The important observation is that alignment often does not behave like a rigid security boundary.
+
+It behaves more like a probabilistic behavioral layer.
+
+That distinction matters.
+
+---
+
+## Alignment as a Behavioral Overlay
+
+A common misconception outside AI security is that aligned models possess some deeply embedded understanding of “safe” versus “unsafe” behavior.
+
+In practice, much of modern alignment appears to emerge from:
+
+* reinforcement learning
+* preference optimization
+* refusal conditioning
+* behavioral steering
+* safety fine-tuning
+
+These mechanisms are extremely useful. But they also create an interesting systems question:
+
+> How stable are these behaviors under adversarial pressure?
+
+Because increasingly, evidence suggests that many refusal behaviors can be:
+
+* redirected
+* suppressed
+* bypassed
+* reframed
+* semantically drifted
+* activation-steered
+
+without catastrophically degrading the model’s underlying capabilities.
+
+That changes how we should think about AI security.
+
+---
+
+## Jailbreaks Are Becoming Systems Problems
+
+The most interesting modern jailbreaks are no longer isolated prompt engineering tricks.
+
+They increasingly resemble classical systems-security problems.
+
+For example:
+
+* trust-boundary confusion between tools and agents
+* capability leakage through orchestration layers
+* parser ambiguity in structured prompts
+* multi-turn state poisoning
+* hidden instruction persistence
+* memory contamination
+* tool invocation abuse
+* retrieval-chain manipulation
+
+This starts looking surprisingly similar to:
+
+* sandbox escapes
+* parser exploitation
+* access-control drift
+* confused deputy problems
+* distributed systems trust failures
+
+In other words, AI systems are slowly inheriting many of the same security properties and failure modes that traditional software systems have struggled with for decades.
+
+---
+
+## The Problem with “Safety as a Layer”
+
+One of the more uncomfortable realizations from jailbreak research is that many current safety mechanisms appear relatively shallow compared to the scale of the underlying models themselves.
+
+A frontier model may contain:
+
+* billions of parameters
+* broad world knowledge
+* coding capability
+* reasoning ability
+* tool-use competence
+
+while the refusal behavior constraining it may emerge from comparatively narrow optimization layers added later in training.
+
+This creates an asymmetry: **the capability substrate is enormous, while portions of the behavioral control surface may be comparatively fragile**.
+
+That does not mean alignment is “fake.” Nor does it mean modern safety work is ineffective.
+
+But it does suggest alignment robustness may ultimately become one of the central engineering problems in AI systems security.
+
+---
+
+## Open-Weight Models and Security Research
+
+Open-weight models like Qwen, Llama, and Mistral are accelerating this research dramatically.
+
+Because researchers can:
+
+* inspect activations
+* modify weights
+* study latent directions
+* analyze refusal localization
+* experiment with steering vectors
+* test robustness directly
+
+This is extremely valuable for security research. It allows the field to move beyond:
+
+* black-box speculation
+* anecdotal jailbreak screenshots
+* surface-level prompting tricks
+
+and toward:
+
+* mechanistic understanding
+* reproducible evaluation
+* representation-level analysis
+* systems-oriented security models
+
+---
+
+## Where This Is Probably Heading
+
+Over the next few years, AI security will likely converge more deeply with:
+
+* distributed systems security
+* operating system isolation
+* sandbox engineering
+* capability control
+* formal trust-boundary modeling
+
+The interesting challenge is no longer simply:
+
+> “Can a model be jailbroken?”
+
+That question is already answered.
+
+The more important question is:
+
+> “Can autonomous AI systems remain behaviorally stable under adversarial optimization, long-horizon execution, and cross-system interaction?”
+
+That is a much harder problem.
+
+And it is probably one of the defining security questions of modern AI systems.
