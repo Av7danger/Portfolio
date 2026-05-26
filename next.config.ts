@@ -1,11 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export", // Generates static HTML for Cloudflare Pages
+const nextConfig = {
+  output: 'export',
   images: {
-    unoptimized: true, // Required for static export
-  },
-  reactStrictMode: true,
-};
+    unoptimized: true
+  }
+}
 
-export default nextConfig;
+export default nextConfig
