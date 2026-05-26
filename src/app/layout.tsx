@@ -89,13 +89,14 @@ export default function RootLayout({
           <div className="absolute top-[-20%] left-[-15%] w-[90vw] h-[90vw] sm:w-[70vw] sm:h-[70vw] rounded-full bg-[radial-gradient(circle,rgba(255,140,60,0.12)_0%,rgba(0,0,0,0)_70%)] blur-[120px] animate-ambient-drift-1" />
           <div className="absolute bottom-[-20%] right-[-15%] w-[80vw] h-[80vw] sm:w-[60vw] sm:h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(255,180,90,0.08)_0%,rgba(0,0,0,0)_70%)] blur-[140px] animate-ambient-drift-2" />
           <div className="absolute top-[35%] left-[-20%] w-[70vw] h-[70vw] sm:w-[50vw] sm:h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(255,120,40,0.06)_0%,rgba(0,0,0,0)_70%)] blur-[100px] animate-ambient-drift-3" />
+          <div className="absolute top-[20%] right-[-10%] w-[85vw] h-[85vw] sm:w-[65vw] sm:h-[65vw] rounded-full bg-[radial-gradient(circle,rgba(200,100,50,0.03)_0%,rgba(0,0,0,0)_70%)] blur-[130px] animate-ambient-drift-4" />
         </div>
 
         {/* Floating global navigation */}
         <Navbar />
         
         {/* Primary page rendering space */}
-        <main className="flex-grow pt-24 px-6 md:px-8 max-w-5xl mx-auto w-full pb-20 relative z-10">
+        <main className="flex-grow pt-24 px-6 md:px-8 max-w-[1080px] mx-auto w-full pb-20 relative z-10">
           {children}
         </main>
         

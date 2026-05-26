@@ -34,10 +34,10 @@ export function Navbar() {
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 py-4 ${
-        scrolled ? "bg-black/60 backdrop-blur-md border-b border-neutral-900/40" : "bg-transparent"
+        scrolled ? "bg-[#050505]/70 backdrop-blur-lg border-b border-neutral-900/15" : "bg-transparent"
       }`}
     >
-      <div className="max-w-5xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-[1080px] mx-auto px-6 flex items-center justify-between">
         {/* Core display handle / logo */}
         <a 
           href="/" 
@@ -48,7 +48,7 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navbar link collection */}
-        <nav className="hidden md:flex items-center gap-1.5 border border-neutral-900/60 bg-black/40 backdrop-blur-md py-1.5 px-3 rounded-full">
+        <nav className="hidden md:flex items-center gap-1.5 border border-neutral-900/30 bg-[#080808]/40 backdrop-blur-md py-1.5 px-3 rounded-full">
           {navItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (

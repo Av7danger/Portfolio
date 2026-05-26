@@ -23,7 +23,7 @@ export function ResearchCard({ post }: ResearchCardProps) {
   ) : null;
 
   return (
-    <article className="group border border-neutral-900 bg-[#030303] hover:border-neutral-700/80 transition-all duration-300 p-7 sm:p-8 rounded-sm flex flex-col justify-between h-full relative">
+    <article className="group border border-neutral-900/30 bg-[#030303]/30 hover:border-neutral-800/60 transition-all duration-300 p-7 sm:p-8 rounded-sm flex flex-col justify-between h-full relative">
       
       <div>
         {/* Header section with category and status badge */}

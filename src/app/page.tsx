@@ -43,12 +43,12 @@ export default async function Home() {
             VARMA
           </h1>
           
-          <p className="text-lg sm:text-xl font-mono text-neutral-300 font-semibold tracking-tight">
+          <p className="text-xs sm:text-sm font-mono text-neutral-400 font-medium tracking-widest uppercase">
             Security Researcher &amp; Founding Engineer
           </p>
         </div>
 
-        <p className="text-neutral-300 max-w-2xl leading-relaxed text-[15px] sm:text-[16px] font-sans">
+        <p className="text-neutral-300 max-w-2xl leading-relaxed text-[15px] sm:text-[16px] font-sans mt-8 sm:mt-10">
           Security researcher exploring alignment behavior, autonomous agents, and distributed trust boundaries.
         </p>
 
@@ -162,7 +162,7 @@ export default async function Home() {
               <a
                 key={post.slug}
                 href={`/writing/${post.slug}`}
-                className="group p-7 sm:p-8 border border-neutral-900 bg-[#030303] hover:border-neutral-800 transition-colors rounded-sm flex flex-col justify-between"
+                className="group p-7 sm:p-8 border border-neutral-900/30 bg-[#030303]/30 hover:border-neutral-800/60 transition-colors rounded-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider mb-3">
