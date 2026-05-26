@@ -53,8 +53,46 @@ body {
 
 /* Fine-grained high-contrast selection colors */
 ::selection {
-  background-color: #f5f5f5;
-  color: #050505;
+  background-color: rgba(245, 158, 11, 0.15); /* Muted warm amber highlight */
+  color: #ffffff;
+}
+
+/* GPU-Accelerated Atmospheric Ambient Drift Animations */
+@keyframes ambient-drift-1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(50px, 30px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-30px, 60px, 0) scale(0.95);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-60px, -40px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-ambient-drift-1 {
+  animation: ambient-drift-1 50s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-ambient-drift-2 {
+  animation: ambient-drift-2 70s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 /* Custom academic footnotes divider and items */

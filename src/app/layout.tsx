@@ -83,12 +83,18 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#050505] text-[#fafafa] font-sans">
+      <body className="min-h-full flex flex-col bg-[#050505] text-[#fafafa] font-sans relative overflow-x-hidden">
+        {/* Faint cinematic warm amber ambient glow overlay */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
+          <div className="absolute top-[-25%] left-[-15%] w-[80vw] h-[80vw] sm:w-[50vw] sm:h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(217,119,6,0.025)_0%,rgba(0,0,0,0)_70%)] blur-[100px] animate-ambient-drift-1" />
+          <div className="absolute bottom-[-15%] right-[-15%] w-[70vw] h-[70vw] sm:w-[45vw] sm:h-[45vw] rounded-full bg-[radial-gradient(circle,rgba(245,158,11,0.015)_0%,rgba(0,0,0,0)_70%)] blur-[120px] animate-ambient-drift-2" />
+        </div>
+
         {/* Floating global navigation */}
         <Navbar />
         
         {/* Primary page rendering space */}
-        <main className="flex-grow pt-24 px-6 md:px-8 max-w-5xl mx-auto w-full pb-20">
+        <main className="flex-grow pt-24 px-6 md:px-8 max-w-5xl mx-auto w-full pb-20 relative z-10">
           {children}
         </main>
         
