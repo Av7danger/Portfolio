@@ -85,6 +85,18 @@ body {
   }
 }
 
+@keyframes ambient-drift-3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, -50px, 0) scale(0.92);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
 .animate-ambient-drift-1 {
   animation: ambient-drift-1 50s ease-in-out infinite alternate;
   will-change: transform;
@@ -92,6 +104,11 @@ body {
 
 .animate-ambient-drift-2 {
   animation: ambient-drift-2 70s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-ambient-drift-3 {
+  animation: ambient-drift-3 55s ease-in-out infinite alternate;
   will-change: transform;
 }
 

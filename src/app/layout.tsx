@@ -86,8 +86,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-[#050505] text-[#fafafa] font-sans relative overflow-x-hidden">
         {/* Faint cinematic warm amber ambient glow overlay */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
-          <div className="absolute top-[-25%] left-[-15%] w-[80vw] h-[80vw] sm:w-[50vw] sm:h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(217,119,6,0.025)_0%,rgba(0,0,0,0)_70%)] blur-[100px] animate-ambient-drift-1" />
-          <div className="absolute bottom-[-15%] right-[-15%] w-[70vw] h-[70vw] sm:w-[45vw] sm:h-[45vw] rounded-full bg-[radial-gradient(circle,rgba(245,158,11,0.015)_0%,rgba(0,0,0,0)_70%)] blur-[120px] animate-ambient-drift-2" />
+          <div className="absolute top-[-20%] left-[-15%] w-[90vw] h-[90vw] sm:w-[70vw] sm:h-[70vw] rounded-full bg-[radial-gradient(circle,rgba(255,140,60,0.12)_0%,rgba(0,0,0,0)_70%)] blur-[120px] animate-ambient-drift-1" />
+          <div className="absolute bottom-[-20%] right-[-15%] w-[80vw] h-[80vw] sm:w-[60vw] sm:h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(255,180,90,0.08)_0%,rgba(0,0,0,0)_70%)] blur-[140px] animate-ambient-drift-2" />
+          <div className="absolute top-[35%] left-[-20%] w-[70vw] h-[70vw] sm:w-[50vw] sm:h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(255,120,40,0.06)_0%,rgba(0,0,0,0)_70%)] blur-[100px] animate-ambient-drift-3" />
         </div>
 
         {/* Floating global navigation */}
