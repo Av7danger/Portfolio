@@ -23,11 +23,11 @@ export function ResearchCard({ post }: ResearchCardProps) {
   ) : null;
 
   return (
-    <article className="group border border-neutral-900 bg-[#030303] hover:border-neutral-700/80 transition-all duration-300 p-6 rounded-sm flex flex-col justify-between h-full relative">
+    <article className="group border border-neutral-900 bg-[#030303] hover:border-neutral-700/80 transition-all duration-300 p-7 sm:p-8 rounded-sm flex flex-col justify-between h-full relative">
       
       <div>
         {/* Header section with category and status badge */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-neutral-900 mb-4 text-xs font-mono">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-neutral-900 mb-5 text-xs font-mono">
           <span className="text-neutral-500 uppercase tracking-widest text-[10px] font-bold">
             {post.category}
           </span>
@@ -43,14 +43,14 @@ export function ResearchCard({ post }: ResearchCardProps) {
         </a>
 
         {/* Abstract/Summary body */}
-        <p className="text-neutral-400 text-[13px] sm:text-sm mt-3 leading-relaxed font-sans line-clamp-3">
+        <p className="text-neutral-300 text-[13.5px] sm:text-[14.5px] mt-4 leading-relaxed font-sans line-clamp-3">
           {post.description}
         </p>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-8">
         {/* Metadata tag listings */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-5">
           {post.tags.map((tag) => (
             <span
               key={tag}
@@ -62,7 +62,7 @@ export function ResearchCard({ post }: ResearchCardProps) {
         </div>
 
         {/* Card footer details */}
-        <div className="flex items-center gap-4 text-neutral-500 font-mono text-[10px] border-t border-neutral-900 pt-3 mt-auto">
+        <div className="flex items-center gap-4 text-neutral-500 font-mono text-[10px] border-t border-neutral-900 pt-4 mt-auto">
           <span className="flex items-center gap-1">
             <Calendar className="w-3 h-3" />
             <span>{post.date}</span>

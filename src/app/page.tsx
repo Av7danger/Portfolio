@@ -48,7 +48,7 @@ export default async function Home() {
           </p>
         </div>
 
-        <p className="text-neutral-400 max-w-2xl leading-relaxed text-[15px] sm:text-[16px] font-sans">
+        <p className="text-neutral-300 max-w-2xl leading-relaxed text-[15px] sm:text-[16px] font-sans">
           Security researcher exploring alignment behavior, autonomous agents, and distributed trust boundaries.
         </p>
 
@@ -56,7 +56,7 @@ export default async function Home() {
         <div className="flex flex-wrap gap-4 pt-2">
           <a
             href="/research"
-            className="flex items-center gap-2 bg-[#fafafa] hover:bg-neutral-200 text-[#050505] font-semibold text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
+            className="flex items-center gap-2 bg-neutral-200/90 hover:bg-neutral-100 text-neutral-950 font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-all border border-neutral-300/10 font-mono"
           >
             <BookOpen className="w-4 h-4" />
             <span>View Research</span>
@@ -65,7 +65,7 @@ export default async function Home() {
             href="https://github.com/Av7danger"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 border border-neutral-800 hover:border-neutral-700 bg-neutral-950 text-neutral-300 hover:text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
+            className="flex items-center gap-2 border border-neutral-900 hover:border-neutral-800 bg-neutral-950 text-neutral-400 hover:text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
           >
             <Github className="w-4.5 h-4.5" />
             <span>GitHub</span>
@@ -74,7 +74,7 @@ export default async function Home() {
             href="https://linkedin.com/in/danishvarma"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 border border-neutral-800 hover:border-neutral-700 bg-neutral-950 text-neutral-300 hover:text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
+            className="flex items-center gap-2 border border-neutral-900 hover:border-neutral-800 bg-neutral-950 text-neutral-400 hover:text-white font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-colors font-mono"
           >
             <Linkedin className="w-4.5 h-4.5" />
             <span>LinkedIn</span>
@@ -162,20 +162,20 @@ export default async function Home() {
               <a
                 key={post.slug}
                 href={`/writing/${post.slug}`}
-                className="group p-6 border border-neutral-900 bg-[#030303] hover:border-neutral-800 transition-colors rounded-sm flex flex-col justify-between"
+                className="group p-7 sm:p-8 border border-neutral-900 bg-[#030303] hover:border-neutral-800 transition-colors rounded-sm flex flex-col justify-between"
               >
                 <div>
-                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider mb-2">
+                  <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider mb-3">
                     {post.category} // {post.date}
                   </div>
                   <h3 className="text-base font-semibold text-neutral-200 group-hover:text-white transition-colors font-display">
                     {post.title}
                   </h3>
-                  <p className="text-neutral-400 text-xs sm:text-sm mt-2 leading-relaxed font-sans line-clamp-2">
+                  <p className="text-neutral-300 text-[13.5px] sm:text-[14.5px] mt-3 leading-relaxed font-sans line-clamp-2">
                     {post.description}
                   </p>
                 </div>
-                <div className="mt-4 flex items-center gap-1.5 text-[10px] font-mono font-semibold text-neutral-400 group-hover:text-white transition-colors">
+                <div className="mt-6 flex items-center gap-1.5 text-[10px] font-mono font-semibold text-neutral-400 group-hover:text-white transition-colors">
                   <span>Read Essay</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </div>

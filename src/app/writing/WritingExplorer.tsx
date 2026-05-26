@@ -78,12 +78,12 @@ export function WritingExplorer({ initialPosts }: WritingExplorerProps) {
                   </h3>
                 </a>
                 
-                <p className="text-neutral-400 text-sm mt-3 leading-relaxed max-w-3xl">
+                <p className="text-neutral-300 text-[14.5px] mt-3 leading-relaxed max-w-3xl">
                   {post.description}
                 </p>
 
                 <div className="mt-4 flex items-center gap-1.5 text-xs font-mono font-semibold text-neutral-400 group-hover:text-white transition-colors">
-                  <a href={`/writing/${post.slug}`} className="flex items-center gap-1.5 hover:underline">
+                  <a href={`/writing/${post.slug}`} className="flex items-center gap-1.5">
                     <span>Read Essay</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </a>
