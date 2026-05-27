@@ -56,7 +56,7 @@ export default async function Home() {
         <div className="flex flex-wrap gap-4 pt-2">
           <a
             href="/research"
-            className="flex items-center gap-2 bg-neutral-200/90 hover:bg-neutral-100 text-neutral-950 font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-all border border-neutral-300/10 font-mono"
+            className="flex items-center gap-2 bg-neutral-300/85 hover:bg-neutral-200 text-neutral-950 font-medium text-xs sm:text-sm py-2.5 px-5 rounded-sm transition-all border border-neutral-300/10 font-mono"
           >
             <BookOpen className="w-4 h-4" />
             <span>View Research</span>
@@ -82,10 +82,42 @@ export default async function Home() {
         </div>
 
         {/* Subtle Resume Access Links */}
-        <div className="pt-3 pl-1 flex items-center gap-1.5 font-mono text-[10px] text-neutral-500 select-none">
+        <div className="pt-3 pl-1 flex items-center gap-1.5 font-mono text-[10px] text-neutral-500 select-none mb-10">
           <a href="/resume" className="hover:text-neutral-300 transition-colors">View Resume</a>
           <span className="text-neutral-700">·</span>
           <a href="/resume" className="hover:text-neutral-300 transition-colors">Download CV</a>
+        </div>
+
+        {/* 1.1 ACTIVE LAB RESEARCH TOPICS TAPE */}
+        <div className="pt-8 border-t border-neutral-900/60 max-w-xl">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-1.5 h-1.5 bg-amber-500/80 rounded-full animate-pulse" />
+            <h2 className="font-mono text-[10px] sm:text-[11px] font-bold text-neutral-500 uppercase tracking-widest">
+              Currently Researching // Active Lab Targets
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 font-mono text-xs text-neutral-300">
+            <div className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+              <span className="text-amber-500/60">→</span>
+              <span>MCP trust-boundary drift</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+              <span className="text-amber-500/60">→</span>
+              <span>autonomous tool security</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+              <span className="text-amber-500/60">→</span>
+              <span>parser differential exploit</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+              <span className="text-amber-500/60">→</span>
+              <span>canonicalization failures</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+              <span className="text-amber-500/60">→</span>
+              <span>agent memory poisoning</span>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -4,7 +4,8 @@ import { getPostBySlug, getPostsByType, getPrevAndNextPosts } from "@/lib/markdo
 import { CustomMDX } from "@/components/CustomMDX";
 import { ProgressBar } from "@/components/ProgressBar";
 import { CopyCitation } from "@/components/CopyCitation";
-import { Calendar, Clock, ChevronLeft, ChevronRight, BookOpen, User } from "lucide-react";
+import { ResearchMetadata } from "@/components/ResearchMetadata";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ParamProps {
   params: Promise<{
@@ -32,6 +33,20 @@ export default async function ResearchDetail({ params }: ParamProps) {
   const { prev, next } = getPrevAndNextPosts(slug, "research");
   const productionUrl = `https://av7danger.dev/research/${slug}`;
 
+  // Find related research articles (same category, max 2, excluding current)
+  const allResearch = getPostsByType("research");
+  const relatedPosts = allResearch
+    .filter((p) => p.category === post.category && p.slug !== slug)
+    .slice(0, 2);
+
+  // Fallback to recent research if not enough related in the same category
+  if (relatedPosts.length < 2) {
+    const fillers = allResearch
+      .filter((p) => p.slug !== slug && !relatedPosts.some((r) => r.slug === p.slug))
+      .slice(0, 2 - relatedPosts.length);
+    relatedPosts.push(...fillers);
+  }
+
   return (
     <article className="max-w-3xl mx-auto space-y-10 animate-fade-in relative">
       {/* 2px scroll progress bar fixed to top */}
@@ -51,66 +66,48 @@ export default async function ResearchDetail({ params }: ParamProps) {
         </span>
       </div>
 
-      {/* 2. Title & Academic Meta Header */}
-      <header className="space-y-6">
-        <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-tight font-display">
-          {post.title}
-        </h1>
-
-        {/* Academic metadata grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 border border-neutral-950 bg-[#030303] rounded-sm font-mono text-[11px] text-neutral-400">
-          <div className="space-y-1 border-r border-neutral-950 pr-2">
-            <span className="text-neutral-500 block uppercase tracking-wider text-[9px]">Author</span>
-            <span className="text-neutral-200 flex items-center gap-1">
-              <User className="w-3 h-3" /> Anish Varma
-            </span>
-            <span className="text-neutral-600 block text-[9px]">Independent Researcher</span>
-          </div>
-          <div className="space-y-1 border-r border-neutral-950 pr-2">
-            <span className="text-neutral-500 block uppercase tracking-wider text-[9px]">Published</span>
-            <span className="text-neutral-200 flex items-center gap-1">
-              <Calendar className="w-3 h-3" /> {post.date}
-            </span>
-            {post.lastUpdated && (
-              <span className="text-neutral-500 block text-[9px]">Updated: {post.lastUpdated}</span>
-            )}
-          </div>
-          <div className="space-y-1 border-r border-neutral-950 pr-2">
-            <span className="text-neutral-500 block uppercase tracking-wider text-[9px]">Reading Time</span>
-            <span className="text-neutral-200 flex items-center gap-1">
-              <Clock className="w-3 h-3" /> {post.readingTime}
-            </span>
-          </div>
-          <div className="space-y-1">
-            <span className="text-neutral-500 block uppercase tracking-wider text-[9px]">Doc Status</span>
-            <div className="mt-0.5">
-              <span className="px-1.5 py-0.5 border border-neutral-800 bg-[#070707] text-neutral-300 rounded-sm text-[9px] uppercase tracking-wider font-semibold">
-                {post.status || "Published"}
-              </span>
-            </div>
-          </div>
+      {/* 2. Redesigned Refined Hero System (Restrained & Editorial) */}
+      <header className="space-y-6 pt-4 pb-8 border-b border-neutral-900/60">
+        <div className="space-y-4">
+          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-tight font-display">
+            {post.title}
+          </h1>
+          {post.description && (
+            <p className="text-neutral-300 text-sm sm:text-base leading-relaxed italic font-sans font-medium max-w-2xl pt-1">
+              {post.description}
+            </p>
+          )}
         </div>
+
+        {/* Dynamic & Hydration-Safe Metadata Indicators */}
+        <ResearchMetadata 
+          date={post.date}
+          lastUpdated={post.lastUpdated}
+          status={post.status}
+          readingTime={post.readingTime}
+        />
+
+        {/* Dynamic Tag list */}
+        {post.tags && post.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 pt-1.5">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[9px] font-mono bg-neutral-950 text-neutral-400 border border-neutral-900/60 px-2 py-0.5 rounded-sm"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
       </header>
 
-      {/* 3. Formal Academic Abstract block */}
-      <section className="p-5 sm:p-6 border border-neutral-900 bg-[#030303] rounded-sm space-y-3 relative overflow-hidden">
-        {/* Abstract side border accent */}
-        <div className="absolute left-0 top-0 h-full w-[2px] bg-neutral-600" />
-        <h3 className="font-mono text-xs font-semibold text-neutral-300 uppercase tracking-widest flex items-center gap-1.5">
-          <BookOpen className="w-3.5 h-3.5" />
-          <span>Document Abstract</span>
-        </h3>
-        <p className="text-neutral-300 text-[13px] sm:text-[14px] leading-relaxed italic font-sans font-medium">
-          {post.description}
-        </p>
-      </section>
-
-      {/* 4. MDX rendered publication body */}
+      {/* 3. MDX rendered publication body */}
       <section className="prose">
         <CustomMDX source={post.content} />
       </section>
 
-      {/* 5. Copyable academic BibTeX / plaintext citation helper */}
+      {/* 4. Copyable academic BibTeX / plaintext citation helper */}
       <CopyCitation
         citationKey={`varma${new Date(post.date).getFullYear()}${slug.replace(/[^a-zA-Z]/g, "")}`}
         title={post.title}
@@ -118,6 +115,34 @@ export default async function ResearchDetail({ params }: ParamProps) {
         year={new Date(post.date).getFullYear().toString()}
         url={productionUrl}
       />
+
+      {/* 5. Related Research Footer Block (Restrained Terminal Style) */}
+      {relatedPosts.length > 0 && (
+        <section className="border-t border-neutral-900/60 pt-10 mt-16 space-y-6">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-amber-500/60 rounded-full" />
+            <h3 className="font-mono text-[10px] tracking-widest text-neutral-500 uppercase font-bold">
+              // Related Research & Document Linkages
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {relatedPosts.map((p) => (
+              <a 
+                key={p.slug} 
+                href={`/research/${p.slug}`} 
+                className="group block py-5 border-b border-neutral-900/40 hover:border-neutral-800 transition-colors"
+              >
+                <div className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider mb-2">// {p.category}</div>
+                <h4 className="text-sm font-semibold text-neutral-200 group-hover:text-amber-500/90 transition-colors font-display leading-snug">{p.title}</h4>
+                <div className="text-[10px] font-mono text-neutral-500 mt-4 flex items-center justify-between">
+                  <span>{p.date}</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* 6. Technical Previous / Next paper navigation */}
       <nav className="flex items-center justify-between border-t border-neutral-900 pt-8 mt-12 font-mono text-xs">

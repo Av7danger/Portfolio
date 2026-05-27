@@ -21,20 +21,39 @@
 html {
   background-color: #050505;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* GPU-Accelerated Step-Based Film Grain Micro-Movement Animation */
+@keyframes grain-animation {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  10% { transform: translate3d(-1%, -1%, 0); }
+  20% { transform: translate3d(-2%, 1%, 0); }
+  30% { transform: translate3d(1%, -2%, 0); }
+  40% { transform: translate3d(-1%, 3%, 0); }
+  50% { transform: translate3d(-2%, 1%, 0); }
+  60% { transform: translate3d(3%, -1%, 0); }
+  70% { transform: translate3d(2%, 1%, 0); }
+  80% { transform: translate3d(-1%, -2%, 0); }
+  90% { transform: translate3d(1%, 3%, 0); }
 }
 
 /* Premium Cinematic Film Grain Texture Overlay */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
   z-index: 9999; /* overlay everything but click-through */
   pointer-events: none;
-  opacity: 0.02; /* extremely low, subtle print grain */
+  opacity: 0.016; /* ultra subtle, nearly imperceptible */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain-animation 12s steps(8) infinite;
+  will-change: transform;
 }
 
 /* Faint Cinematic Viewport Edge Vignette Overlay */
@@ -52,11 +71,19 @@ body::after {
 
 body {
   background-color: #050505;
-  color: #fafafa;
+  color: #ececec; /* slightly elevated readability contrast */
   font-family: var(--font-sans);
   min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Dynamic Scroll-Depth Atmosphere Scaling */
+.ambient-glow-container {
+  opacity: calc(0.6 + var(--scroll-progress, 0) * 0.4);
+  transition: opacity 0.5s ease-out;
+  will-change: opacity;
 }
 
 /* Custom minimal scrollbar styled like technical IDEs */
@@ -86,54 +113,28 @@ body {
 
 /* GPU-Accelerated Atmospheric Ambient Drift Animations */
 @keyframes ambient-drift-1 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  33% {
-    transform: translate3d(50px, 30px, 0) scale(1.08);
-  }
-  66% {
-    transform: translate3d(-30px, 60px, 0) scale(0.95);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(50px, 30px, 0) scale(1.08); }
+  66% { transform: translate3d(-30px, 60px, 0) scale(0.95); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @keyframes ambient-drift-2 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-60px, -40px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-60px, -40px, 0) scale(1.05); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @keyframes ambient-drift-3 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(40px, -50px, 0) scale(0.92);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(40px, -50px, 0) scale(0.92); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @keyframes ambient-drift-4 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-30px, 40px, 0) scale(1.06);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-30px, 40px, 0) scale(1.06); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
 .animate-ambient-drift-1 {
@@ -158,7 +159,7 @@ body {
 
 /* Custom academic footnotes divider and items */
 .footnotes {
-  margin-top: 4rem;
+  margin-top: 5rem;
   padding-top: 2rem;
   border-top: 1px solid #171717;
   font-family: var(--font-sans);
@@ -172,19 +173,21 @@ body {
   font-weight: 600;
   color: #e5e5e5;
   margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
 }
 
 .footnote-item {
   font-size: 0.85rem;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .footnote-backref {
-  color: #e5e5e5;
+  color: #d97706;
   margin-left: 0.25rem;
   text-decoration: none;
   font-family: var(--font-mono);
+  font-size: 0.8em;
 }
 
 .footnote-backref:hover {
@@ -194,24 +197,34 @@ body {
 /* Publication-quality technical prose markup rules */
 .prose {
   font-size: 16px;
-  line-height: 1.75;
+  line-height: 1.85;
+}
+
+@media (min-width: 640px) {
+  .prose {
+    font-size: 17px; /* luxurious mobile-to-desktop fluid sizing */
+  }
 }
 
 .prose p {
   margin-top: 0;
-  margin-bottom: 1.75rem; /* luxurious publication-grade paragraph rhythm */
-  color: #e2e2e2;
+  margin-bottom: 2rem; /* luxurious publication-grade paragraph rhythm */
+  color: #ececec;
+  max-width: 75ch; /* optimal reading line length */
+  word-wrap: break-word;
 }
 
 .prose ul, .prose ol {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   padding-left: 1.5rem;
 }
 
 .prose li {
-  margin-bottom: 0.5rem;
-  color: #e2e2e2;
+  margin-bottom: 0.65rem;
+  color: #ececec;
+  line-height: 1.8;
+  max-width: 75ch;
 }
 
 .prose strong {
@@ -221,18 +234,24 @@ body {
 
 .prose em {
   font-style: italic;
-  color: #e5e5e5;
+  color: #f5f5f5;
 }
 
 /* Code highlight specific alignments */
 .shiki-container pre {
   margin: 0 !important;
-  padding: 1.25rem !important;
+  padding: 1.5rem !important;
   background-color: transparent !important;
   font-family: var(--font-mono) !important;
-  font-size: 0.875rem !important;
-  line-height: 1.7 !important;
+  font-size: 0.825rem !important;
+  line-height: 1.75 !important;
   overflow-x: auto;
+}
+
+@media (min-width: 640px) {
+  .shiki-container pre {
+    font-size: 0.875rem !important;
+  }
 }
 
 .shiki-container code {
@@ -241,13 +260,115 @@ body {
   padding: 0 !important;
   color: inherit !important;
   font-size: inherit !important;
+  word-break: normal;
+  white-space: pre;
 }
 
 /* Citation helpers styling */
 .citation-helper-box {
-  margin-top: 3rem;
+  margin-top: 4rem;
   border-top: 1px dashed #262626;
   padding-top: 2rem;
+}
+
+/* Custom premium Mermaid diagrams styling */
+.mermaid-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #030303 !important;
+  border: 1px solid #141414 !important;
+  border-radius: 4px !important;
+  padding: 1.5rem !important;
+  margin: 2.5rem 0 !important;
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-width: thin;
+}
+
+@media (min-width: 640px) {
+  .mermaid-chart {
+    padding: 2.5rem !important;
+  }
+}
+
+.mermaid-chart svg {
+  background: transparent !important;
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.mermaid-chart .node rect,
+.mermaid-chart .node circle,
+.mermaid-chart .node polygon,
+.mermaid-chart .node path {
+  fill: #060606 !important;
+  stroke: #402008 !important; /* subtle dark amber border */
+  stroke-width: 1px !important;
+  rx: 3px !important; /* rounded corners */
+  transition: all 0.2s ease !important;
+}
+
+.mermaid-chart .node:hover rect,
+.mermaid-chart .node:hover circle,
+.mermaid-chart .node:hover polygon,
+.mermaid-chart .node:hover path {
+  fill: #0b0b0b !important;
+  stroke: #d97706 !important; /* brighter amber on hover */
+  stroke-width: 1.2px !important;
+}
+
+.mermaid-chart .edgePath .path {
+  stroke: #78350f !important; /* subtle amber lines */
+  stroke-width: 1.2px !important;
+  transition: stroke 0.2s ease !important;
+}
+
+.mermaid-chart .edgePath .path:hover {
+  stroke: #d97706 !important;
+}
+
+.mermaid-chart .edgePath .markerPath {
+  fill: #78350f !important;
+  stroke: none !important;
+}
+
+.mermaid-chart .label {
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+  color: #e5e5e5 !important;
+  font-size: 11px !important;
+}
+
+.mermaid-chart .label foreignObject {
+  color: #e5e5e5 !important;
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+}
+
+.mermaid-chart .edgeLabel rect {
+  fill: #030303 !important;
+  rx: 2px !important;
+}
+
+.mermaid-chart .edgeLabel span {
+  color: #a3a3a3 !important;
+  font-size: 9px !important;
+  font-family: var(--font-mono) !important;
+}
+
+/* Mobile responsive resets to prevent viewport stretching */
+@media (max-width: 640px) {
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .shiki-container {
+    max-width: 100% !important;
+    overflow-x: auto;
+  }
 }
 
 /* Print styles for publication-grade CV generation */
