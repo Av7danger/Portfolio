@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { codeToHtml } from "shiki";
 import { Mermaid } from "./Mermaid";
 import { ShieldAlert, Info, AlertTriangle, Lightbulb } from "lucide-react";
+import remarkGfm from "remark-gfm";
 
 // Helper to generate anchor-friendly slug from text
 function slugify(text: string): string {
@@ -104,15 +105,15 @@ const components = {
 
   // Technical whitepaper-grade tables
   table: (props: any) => (
-    <div className="overflow-x-auto my-8 border border-neutral-900 rounded-sm">
-      <table className="w-full text-left border-collapse font-mono text-xs sm:text-sm text-neutral-300 bg-[#030303]" {...props} />
+    <div className="my-8 overflow-x-auto rounded-sm border border-amber-950/20 bg-[#030303] scrollbar-thin scrollbar-track-black scrollbar-thumb-neutral-900 shadow-sm shadow-amber-950/[0.02]">
+      <table className="w-full min-w-[640px] text-left border-collapse font-mono text-xs sm:text-sm text-neutral-400" {...props} />
     </div>
   ),
-  thead: (props: any) => <thead className="border-b border-neutral-800 bg-[#070707] text-neutral-400 font-semibold" {...props} />,
-  tbody: (props: any) => <tbody className="divide-y divide-neutral-900" {...props} />,
-  tr: (props: any) => <tr className="hover:bg-[#070707]/30 transition-colors" {...props} />,
-  th: (props: any) => <th className="p-3 font-medium uppercase tracking-wider text-[11px]" {...props} />,
-  td: (props: any) => <td className="p-3" {...props} />,
+  thead: (props: any) => <thead className="border-b border-amber-950/30 bg-[#050505] text-neutral-200 font-semibold uppercase tracking-wider text-[11px]" {...props} />,
+  tbody: (props: any) => <tbody className="divide-y divide-amber-950/15" {...props} />,
+  tr: (props: any) => <tr className="hover:bg-amber-500/[0.02] hover:text-neutral-200 transition-colors duration-150" {...props} />,
+  th: (props: any) => <th className="px-4 py-3.5 font-medium border-r border-amber-950/10 last:border-r-0" {...props} />,
+  td: (props: any) => <td className="px-4 py-3 leading-relaxed border-r border-amber-950/10 last:border-r-0" {...props} />,
 
   // Intercept blockquotes to render alert callouts (e.g. [!NOTE])
   blockquote: ({ children }: any) => {
@@ -245,7 +246,16 @@ export function CustomMDX({ source }: CustomMDXProps) {
   return (
     <div className="prose prose-invert max-w-none">
       {/* MDXRemote parses and renders fully statically during next export */}
-      <MDXRemote source={source} components={components} />
+      <MDXRemote 
+        source={source} 
+        components={components} 
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [],
+          }
+        }}
+      />
     </div>
   );
 }
